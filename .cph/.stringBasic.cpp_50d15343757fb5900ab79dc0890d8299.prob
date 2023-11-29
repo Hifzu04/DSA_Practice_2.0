@@ -1,0 +1,1 @@
+{"name":"Local: stringBasic","url":"/home/hifzur/work/cpp/stringBasic.cpp","tests":[{"id":1699545111005,"input":"hifzur \nrhaman\n khan\nand\nkalakaar","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/hifzur/work/cpp/stringBasic.cpp","group":"local","local":true}
