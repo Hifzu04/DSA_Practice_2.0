@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+//tokanisation usig sstream function.
 #include <sstream>
 using namespace std;
 
