@@ -16,9 +16,9 @@ Sample Output
 #include <iostream>
 #include <array>
 using namespace std;
-int main()
+/* int main()
 {
-    // other approach  => 2 loop  O(N^2)
+    //other approach  => 2 loop  O(N^2)
 
     int arr[11] = {1, 3, 2, 1, 4, 1, 3, 2, 1, 1, 2};
     int total_area = 8;
@@ -36,4 +36,37 @@ int main()
             }
         }
     }
+}*/
+
+// o(nlogn) : crearte cumulutive sum. then cs[j] - c_s[i] =k ; then c_s[i]+k = binary+search[j]
+
+//best approach :(two ptr) => O(N)
+
+int main (){
+    int arr[11] = {1, 3, 2, 1, 4, 1, 3, 2, 1, 1, 2};
+    int total_area = 8;
+    int i=0;
+    int j = 0;
+    int sum=0;
+    while(i<10){
+        
+        if(sum==total_area){
+            cout<<i<<" "<<j-1<<endl;
+            sum =0;
+            i++;
+            j=i;
+        }
+        else if(sum<total_area){
+            sum+=arr[j];
+            j++;
+        }
+        else{
+            i++;
+            j=i;
+            sum=0;
+        }
+
+
+    }
+
 }
