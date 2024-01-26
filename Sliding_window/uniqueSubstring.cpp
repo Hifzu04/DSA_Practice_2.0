@@ -26,6 +26,7 @@ string largest_substring(string str)
     {
         char ch = str[j];
 
+        //when an element occured again.
         if (m.count(ch) and m[ch] >= i)
         {
             i = m[ch] + 1;
