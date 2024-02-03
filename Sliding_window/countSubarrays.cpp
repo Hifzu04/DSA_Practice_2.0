@@ -19,7 +19,7 @@ Hint : You may require a hashmap.
 using namespace std;
 int main()
 {
-    // brute force. O(n)^2
+    // brute force. O(N)^2.
     int arr[5] = {10, 2, -2, -20, 10};
     int k = -10;
     int count = 0;
@@ -28,7 +28,7 @@ int main()
     for (int i = 0; i < 5; i++)
     {
 
-        while (sum > k && j<5 )
+        while (sum > k && j < 5)
         {
             sum += arr[j];
             j++;
@@ -36,10 +36,12 @@ int main()
             {
                 count++;
                 j = i;
-                
+                sum = 0;
             }
         }
-        sum = 0;
+        
     }
-    cout << "num of subarray with sum ==k is " << count << endl;
+    cout << "num of subarray with sum == k is " << count << endl;
 }
+
+//solve the equatuin
