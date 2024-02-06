@@ -24,24 +24,22 @@ int main()
     int k = -10;
     int count = 0;
     int sum = 0;
-    int j = 0;
+    
     for (int i = 0; i < 5; i++)
     {
 
-        while (sum > k && j < 5)
+         sum=0;
+        for (int j = i; j < 5; j++)
         {
             sum += arr[j];
-            j++;
-            if (sum == k)
-            {
+            if(sum==k){
                 count++;
-                j = i;
-                sum = 0;
             }
         }
         
+
     }
     cout << "num of subarray with sum == k is " << count << endl;
 }
 
-//solve the equatuin
+// solve the equatuin
