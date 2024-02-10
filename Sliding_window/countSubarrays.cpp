@@ -28,7 +28,7 @@ int main()
     for (int i = 0; i < 5; i++)
     {
 
-         sum=0;
+           
         for (int j = i; j < 5; j++)
         {
             sum += arr[j];
@@ -36,10 +36,11 @@ int main()
                 count++;
             }
         }
+        sum=0;
         
 
     }
     cout << "num of subarray with sum == k is " << count << endl;
 }
 
-// solve the equatuin
+// solve the equation
