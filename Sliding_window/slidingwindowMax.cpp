@@ -15,7 +15,8 @@ Maximum of 1, 2, 3 is 3
 Maximum of 2, 3, 1 is 3
 Maximum of 3, 1, 4 is 4
 and so on .......
-Note - The optimized solution involves use of deque (doubly ended queue)*/
+Note - The optimized solution involves use of deque (doubly ended queue)
+*/
 
 
 #include <iostream>
@@ -25,14 +26,11 @@ using namespace std;
 vector<int> MaxOfConsecutiveThree(vector<int>&vec , int len){
     vector<int>resultVector;
     int maxm;
-    for(int i=0; i<len ; i++){
-        int k= i;
-        for(int j=1; j<4; j++){
-            
-            maxm = max(INT_MIN, vec[k]);
-            k++;
-        }
-        resultVector.push_back(maxm);
+    for(int i=0; i<len-2 ; ++i){
+        maxm = max(vec[i], max(vec[i+1], vec[i+2]));
+        
+        resultVector.push_back(maxm);        
+
     }
     return resultVector;
 
