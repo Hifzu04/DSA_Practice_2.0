@@ -3,19 +3,23 @@ using namespace std;
 
 bool binarySearch(int *arr, int key, int start, int end)
 {
+    if (start > end)
+    {
+        return false;
+    }
+
     int mid = (start + end) / 2;
 
-    //base 
+    // base
     if (arr[mid] == key)
     {
         return 1;
     }
 
-    
     if (arr[mid] > key)
     {
-        //end = mid - 1;
-        bool rearrange = binarySearch(arr, key, start, mid-1);
+        end = mid - 1;
+        bool rearrange = binarySearch(arr, key, start, end);
         return rearrange;
     }
     else
@@ -33,9 +37,9 @@ int main()
     int key;
     cout << "enter the element which you want to search." << endl;
     cin >> key;
-    int start = 0;
-    int end = n - 1;
-    bool answer = binarySearch(arr, n, key, start, end);
+    //int start = 0;
+    //int end = n - 1;
+    bool answer = binarySearch(arr,key, 0, n-1);
     if (answer)
     {
         cout << "yes present";
