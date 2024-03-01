@@ -2,16 +2,16 @@
 #include <iostream>
 using namespace std;
 
-int bubbleSort(int arr, int len)
+void bubbleSort(int *arr, int len)
 {
     // base case
-    if (len == 0)
-    {
-        return arr;
-    }
+    // if (len == 0)
+    // {
+    //     return ;
+    // }
     if (len == 1)
     {
-        return arr;
+        return ;
     }
 
     // ek loop solve karlo.
@@ -22,16 +22,17 @@ int bubbleSort(int arr, int len)
             swap(arr[i], arr[i + 1]);
         }
     }
-    //for rest loop, recursive call 
-    bubbleSort(arr, len-1);
+    // for rest loop, recursive call
+    bubbleSort(arr, len - 1);
 }
 
 int main()
 {
     int arr[10] = {8, 9, 2, 0, 5, 0, 7, 6, 9, 7};
-    int solution[10] = bubbleSort(arr, arr.length());
+    int len = sizeof(arr) / sizeof(arr[0]);
+     bubbleSort(arr, len);
     for (int i = 0; i < 10; i++)
     {
-        cout << solution[i];
+        cout << arr[i]<<" ";
     }
 }
