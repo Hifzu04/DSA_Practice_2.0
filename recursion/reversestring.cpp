@@ -11,11 +11,12 @@ void reversestring(string &str, int i, int j) // pass by reference
         return ;
         //Use return; to exit a function early, especially in functions with a return type of void.
     }
+    //swap(str[i] , str[j]);
      char temp = str[i];
      str[i] = str[j];
      str[j] = temp;
     
-    //swap(str[i] , str[j]);
+    
     reversestring(str , i+1 , j-1);
     //return reversestring;
 }
