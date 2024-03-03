@@ -1,7 +1,6 @@
 #include <iostream>
-#include<climits>
+#include <climits>
 using namespace std;
-
 
 // repeatedly selecting the smallest (or largest) element from the unsorted portion of the list and moving it to the sorted portion of the list.
 // method 1 (without recursion)
@@ -28,29 +27,31 @@ using namespace std;
     }
 }*/
 
-//method 2 , using recursion
-void selectionSort(int arr[] , int n , int i ){
-    //base case
-    if(n==0){
-        return ;
+// method 2 , using recursion
+void selectionSort(int arr[], int n, int i)
+{
+    // base case
+    if (i==n-1)
+    {
+        return;
     }
 
-
-     int min_index = i;
-    //select smallest and place it on very frist position
-    for(int j = i+1; j< n; j++){
-        if(arr[j]<arr[min_index]){
-            min_index= j;
+    int min_index = i;
+    // select smallest and place it on very frist position
+    for (int j = i+1; j < n; j++)
+    {
+        if (arr[j] < arr[min_index])
+        {
+            min_index = j;
         }
-
     }
-    //place the min at left most 
-    if(arr[min_index] != arr[i]){
-        swap(arr[min_index] , arr[i]);
-        
+    // place the min at left most
+    if (arr[min_index] != arr[i])
+    {
+        swap(arr[min_index], arr[i]);
     }
-    //do it for rest of the elemet 
-    selectionSort(arr , n-1 , i+1);
+    // do it for rest of the elemet
+    selectionSort(arr, n, i + 1);
 }
 
 int main()
@@ -62,7 +63,7 @@ int main()
     {
         cin >> arr[i];
     }
-    selectionSort(arr, n , 0);
+    selectionSort(arr, n, 0);
 
     for (int i = 0; i < n; i++)
     {
