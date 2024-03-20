@@ -17,12 +17,12 @@ void merge(int *arr, int s, int e)
     int k = s;
     for (int i = 0; i < len1; i++)
     {
-        first[i] = arr[mainArrayIndex++];
+        first[i] = arr[k++];
     }
     k= mid + 1;
     for (int i = 0; i < len2; i++)
     {
-        second[i] = arr[mainArrayIndex++];
+        second[i] = arr[k++];
     }
 
     // merge them
@@ -35,7 +35,7 @@ void merge(int *arr, int s, int e)
     {
         if (first[index1] < second[index2])
         {
-            arr[mainArrayIndex] = first[index1++];
+            arr[mainArrayIndex++] = first[index1++];
         }
         else
         {
@@ -44,7 +44,7 @@ void merge(int *arr, int s, int e)
     }
     while (index1 < len1)
     {
-        arr[mainArrayIndex] = first[index1++];
+        arr[mainArrayIndex++] = first[index1++];
     }
     while (index2 < len2)
     {
