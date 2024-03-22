@@ -1,8 +1,14 @@
 #include>iostream>
 usign namespace std;
 
-void quicksort(*arr , s , e){
+void quicksort(int *arr , int s , int e){
+    //base case
+    if(s>=e){
+    return;
+    }
     
+    
+
 }
 
 int main(){
