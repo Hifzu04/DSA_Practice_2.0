@@ -1,12 +1,21 @@
 #include>iostream>
 usign namespace std;
 
+
+int partionAndPivit(int )
+
 void quicksort(int *arr , int s , int e){
     //base case
     if(s>=e){
     return;
     }
-    
+    //select pivit and arrange all element less than and greater that pivit on lhs and rhs of pivit then  do patrition 
+    int partition  = partitionAndPivit(arr , s , e );
+
+    //do the same case for lhs  and rhs of the pivited element.
+    quicksort(arr , s , partition-1);
+    quicksort(arr , partition+1 , e);
+
     
 
 }
