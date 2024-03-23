@@ -1,41 +1,56 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 int partitionAndPivot(int arr[], int s, int e)
-{ // doubt : original array won't change??
+{
+    // doubt : original array won't change??
     // pivot selection
     int pivot = arr[s];
     // placing pivot at its correct positon
     int count = 0;
-    for (int i = s+1; i <= e; i++)
+    for (int i = s + 1; i <= e; i++)
     {
-        if(arr[i]<pivot){
+        if (arr[i] <= pivot)
+        {
             count++;
         }
     }
-    int pivotIndex = s+count;
-    swap(arr[pivotIndex] ,pivot);
+    int pivotIndex = s + count;
+    swap(arr[pivotIndex], arr[s]);
 
-
-    //lhs and rhs arrangemet wrt pivot
-    //in lhs of pivot do all the element smaller than that
-    //in rhs of pivot do all the element larger than that
+    // lhs and rhs arrangemet wrt pivot
+    // in lhs of pivot do all the element smaller than that
+    // in rhs of pivot do all the element larger than that
     int i = s;
-    int j= e;
-    while(i<pivotIndex && j>pivotIndex){
-        if(arr[j]<pivot and arr[i]>pivot){
+    int j = e;
+    while (i < pivotIndex && j > pivotIndex)
+    {
+        /*if(arr[j]<=pivot and arr[i]>=pivot){
             swap(arr[i] , arr[j]);
             i++;
             j--;
         }
-        if(arr[i]<pivot and arr[j]<pivot){
+        if(arr[i]<=pivot and arr[j]<=pivot){
             i++;
         }
-        if(arr[i]>pivot and arr[j]>pivot){
+        if(arr[i]>=pivot and arr[j]>=pivot){
+            j--;
+        }*/
+
+        while (arr[i] <= pivot)
+        {
+            i++;
+        }
+        while (arr[j] >= pivot)
+        {
             j--;
         }
+        if (i < pivotIndex && j > pivotIndex)
+        {
+            swap(arr[i++], arr[j--]);
+        }
     }
-    //return index of pivit after it gets at postion of partition (correct position)
+    // return index of pivit after it gets at postion of partition (correct position)
     return pivotIndex;
 }
 
@@ -56,10 +71,10 @@ void quickSort(int arr[], int s, int e)
 
 int main()
 {
-    int arr[10] = {9, 8, 3, 4, 5, 6, 7, 1, 2, 0};
-    int size = 10;
-    quickSort(arr, 0, size-1);
-    for (int i = 0; i < 10; i++)
+    int arr[13] = {9, 76, 3, 76, 5, 76, 9, 1, 2, 0, 33, 45,8};
+    int size = 13;
+    quickSort(arr, 0, size - 1);
+    for (int i = 0; i < 13; i++)
     {
         cout << arr[i] << " ";
     }
