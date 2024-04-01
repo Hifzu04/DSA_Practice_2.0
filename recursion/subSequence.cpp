@@ -1,10 +1,11 @@
+//findout why compilation error
 #include<iostream>
 #include<vector>
 using namespace std;
 
 void subSeq(string sequence,vector<string>& subsequence,string ans,int index){
     //jubb jubb base case reach ho, add kardo
-    if(index>=3){
+    if(index==sequence.size()){
         subsequence.push_back(ans);
         return;
     }
