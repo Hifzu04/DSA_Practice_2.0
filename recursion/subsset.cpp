@@ -35,7 +35,7 @@ int main()
     int index = 0;
     subSet(set, powerSet, eachSubset, index);
 
-    // it is vector itself
+    // it is vector itself...
     for (auto vctr : powerSet)
     {
         for (auto it : vctr)
