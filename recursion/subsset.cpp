@@ -8,7 +8,7 @@ void subSet(vector<int> set, vector<vector<int>> &powerSet, vector<int> eachSubs
 {
 
     //base case
-    if (index >= set.size())
+    if (index == set.size())
     {
         powerSet.push_back(eachSubset);
         return;
@@ -25,7 +25,7 @@ void subSet(vector<int> set, vector<vector<int>> &powerSet, vector<int> eachSubs
 
 int main()
 {
-    vector<int> set{1, 2, 3,4};
+    vector<int> set{1, 2, 3};
 
     //for whole power set(as final answer);
     vector<vector<int>> powerSet;
