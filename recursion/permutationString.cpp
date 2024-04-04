@@ -3,7 +3,7 @@
 using namespace std;
 // write all the possible permutation of a string. for eg for  abc : abc , acb , bac.....3!
 
-void permutationString(string str, int index, vector<string> finalAns)
+void permutationString(string str, int index, vector<string>& finalAns)
 {
    // base case
    if (index == str.length())
