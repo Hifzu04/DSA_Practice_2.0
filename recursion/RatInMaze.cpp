@@ -11,12 +11,44 @@ m[][] = {{1, 0, 0, 0},
 {1, 1, 0, 0},
 {0, 1, 1, 1}}
 Output:
-DDRDRR DRDDRR 
+DDRDRR DRDDRR
+
+algorithm :
+for each position, we can go any dirxn using recursion .
+condition for the path to move : 1)posn inside the matrix, 2) posn[j][k] ==1 3) cant not get back or up if visited. otherwise infinit loop.
 */
 
-#include<iostream>
-#include<vector>
-using namespace std; 
-int main (){
+#include <iostream>
+#include <vector>
+using namespace std;
+
+
+
+
+
+
+int main()
+{
+
+    vector<vector<int>> input
+    {
+        {1, 0, 0, 0},
+        {1, 1, 0, 1},
+        {1, 1, 0, 0},
+        {0, 1, 1, 1}
+    };
+    //create a visited vector with all elment zero for condition 3 of algorithm.
+    int visited[input.size()][input.size()] = {0};
+
+    string output = " ";
+    int init = 0 ;
+    vector<int>tempVector;
+
+    ratMovement(input, visited, output , init, tempVector)
+
+
     
+
+
+
 }
