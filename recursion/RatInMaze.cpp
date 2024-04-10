@@ -22,6 +22,43 @@ condition for the path to move : 1)posn inside the matrix, 2) posn[j][k] ==1 3) 
 #include <vector>
 using namespace std;
 
+bool conditioning(vector<vector<int>>input,int vistied[][] , int startX , int startY  ){
+    if(startX<0 || startY<0  || input[startX][startY] ==0 || vistied[startX][startY] == 1){
+        return false;
+    } else{
+        return true;
+    }
+}
+
+ratMovement(vector<vector<int>>input ,  int vistied[][], string output , int startX , int startY, vector<string>& outputVector){
+
+    //initially rat is at 0,0
+
+    //base case
+    if(startX == input.size()-1 and startY==input.size()-1){
+        outputVector.push_back(output);
+        return;
+    }
+
+    
+
+    //left movement
+    int newX = startX-1;
+    int newY = startY;
+    if(conditioning((input , vistied[][] , newX ,newY ))){
+             
+    }
+
+
+
+    if(condition == true){
+        //left movement 
+        ratMovement(input , vistied , output , startX-1 , startY , outputVector);
+        output+= 'L';
+        vistied[startX][startY] = 1;  
+    }
+
+}
 
 
 
@@ -38,13 +75,14 @@ int main()
         {0, 1, 1, 1}
     };
     //create a visited vector with all elment zero for condition 3 of algorithm.
-    int visited[input.size()][input.size()] = {0};
+    int visited[input.size()+1][input.size()+1] = {0};
 
     string output = " ";
-    int init = 0 ;
-    vector<int>tempVector;
+    int startX= 0 ;
+    int startY = 0;
+    vector<string>outputVector;
 
-    ratMovement(input, visited, output , init, tempVector)
+    ratMovement(input, visited, output , startX,startY, tempVector)
 
 
     
