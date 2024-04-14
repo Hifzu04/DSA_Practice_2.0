@@ -34,7 +34,7 @@ bool conditioning(vector<vector<int>> input, int vistied[][], int startX, int st
     }
 }
 
-ratMovement(vector<vector<int>> input, int vistied[][], string output, int startX, int startY, vector<string> &outputVector)
+void ratMovement(vector<vector<int>> input, int vistied[][], string output, int startX, int startY, vector<string> &outputVector)
 {
 
     // initially rat is at 0,0
@@ -46,18 +46,53 @@ ratMovement(vector<vector<int>> input, int vistied[][], string output, int start
         return;
     }
 
-    // left movement
-    int newX = startX - 1;
+    
+    
+      vistied[startX][startY] = 0;
+    //left movement
+    int newX = startX-1;
     int newY = startY;
-    if (conditioning((input, vistied[][], newX, newY)))
-    {
-    }    //fcukkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
-
+    bool condition = conditioning((input, vistied[][], newX, newY));
     if (condition == true)
     {
         // left movement
-        ratMovement(input, vistied, output, startX - 1, startY, outputVector);
         output += 'L';
+        vistied[startX][startY] = 1;
+        ratMovement(input, vistied, output, newX - 1, newY, outputVector);
+        //backtracking
+        output.pop_back();
+    }
+   if (condition == true)
+    {
+        // raight movement
+        output += 'R';
+         vistied[newX][newY] = 1;
+        ratMovement(input, vistied, output, newX +1, newY, outputVector);
+        //backtracking
+        output.pop_back();
+
+        
+    }
+    if (condition == true)
+    {
+        // up movement
+        output += 'U';
+        vistied[newX][newY] = 1;
+
+        ratMovement(input, vistied, output, newX , newY-1, outputVector);
+        //backtracking
+        output.pop_back();
+        
+        
+    }
+    if (condition == true)
+    {
+        // down movement
+        output += 'D';
+        ratMovement(input, vistied, output, newX , newY+1, outputVector);
+        //backtracking
+        output.pop_back();
+
         vistied[startX][startY] = 1;
     }
 }
@@ -78,5 +113,10 @@ int main()
     int startY = 0;
     vector<string> outputVector;
 
-    ratMovement(input, visited, output, startX, startY, tempVector)
+    ratMovement(input, visited, output, startX, startY, outputVector);
+
+    for(auto element : outputVector){
+        cout<<element<<" ";
+    }
+
 }
