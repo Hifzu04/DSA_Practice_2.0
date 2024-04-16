@@ -19,13 +19,14 @@ condition for the path to move : 1)posn inside the matrix, 2) posn[j][k] ==1 3) 
 */
 
 #include <iostream>
+#include<algorithm>
 #include <vector>
 using namespace std;
 
-bool isSafe(vector<vector<int>> input, int visited[][] , int startX, int startY)
+bool isSafe(vector<vector<int>> input, int visited[][input.size()], int startX, int startY);
 
 {
-    if (startX < 0 || startY < 0 || input[startX][startY] == 0 || visited[startX][startY] == 1)
+    if (startX < 0 || startY < 0 || startX>=input.size() || startY>=input.size() || input[startX][startY] == 0 || visited[startX][startY] == 1)
     {
         return false;
     }
@@ -35,7 +36,7 @@ bool isSafe(vector<vector<int>> input, int visited[][] , int startX, int startY)
     }
 }
 
-void ratMovement(vector<vector<int>> input, int visited[][], string output, int startX, int startY, vector<string> &outputVector)
+void ratMovement(vector<vector<int>> input, int visited[][input.size()], string output, int startX, int startY, vector<string> &outputVector);
 {
 
     // initially rat is at 0,0
@@ -49,14 +50,13 @@ void ratMovement(vector<vector<int>> input, int visited[][], string output, int 
 
     
     
-    vistied[startX][startY] = 1;
+    visited[startX][startY] = 1;
 
 
     //left movement
-    int newX = --startX;
+    int newX = startX-1;
     int newY = startY;
-    bool condition = isSafe((input, visited[][], newX, newY));
-    if (condition == true)
+    if (isSafe(input, visited, newX, newY))
     {
         output += 'L';
         
@@ -67,10 +67,10 @@ void ratMovement(vector<vector<int>> input, int visited[][], string output, int 
 
 
     //right movement
-    newX = --startX;
+    newX = startX+ 1;
     newY = startY;
-    condition = isSafe((input, visited[][], newX, newY));
-    if (condition == true)
+   
+    if (isSafe(input, visited, newX, newY))
     {
         
         output += 'R';
@@ -82,9 +82,9 @@ void ratMovement(vector<vector<int>> input, int visited[][], string output, int 
 
     //up movement
     newX = startX;
-    newY = --startY;
-     condition = isSafe((input, visited[][], newX, newY));
-    if (condition == true)
+    newY = startY-1;
+    // condition = isSafe((input, visited, newX, newY));
+    if (isSafe(input, visited, newX, newY))
     {
         
         output += 'U';
@@ -97,9 +97,8 @@ void ratMovement(vector<vector<int>> input, int visited[][], string output, int 
 
     //down movement
     newX = startX;
-    newY = ++startY;
-    condition = isSafe((input, visited[][], newX, newY));
-    if (condition == true)
+    newY = startY+1;
+    if (isSafe(input, visited, newX, newY))
     {
         
         output += 'D';
@@ -111,7 +110,7 @@ void ratMovement(vector<vector<int>> input, int visited[][], string output, int 
 
 
     //empty the vistied marks after a path gets fully covered for new path 
-    vistied[startX][startY] = 0;
+    visited[startX][startY] = 0;
 
 
 
@@ -127,7 +126,7 @@ int main()
         {1, 1, 0, 0},
         {0, 1, 1, 1}};
     // create a visited vector with all elment zero for condition 3 of algorithm.
-    int visited[input.size() + 1][input.size() + 1] = {0};
+int visited[input.size()][input.size()] = {0};
 
     string output = "";
     int startX = 0;
