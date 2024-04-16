@@ -23,8 +23,7 @@ condition for the path to move : 1)posn inside the matrix, 2) posn[j][k] ==1 3) 
 #include <vector>
 using namespace std;
 
-bool isSafe(vector<vector<int>> input, int visited[][input.size()], int startX, int startY);
-
+bool isSafe(vector<vector<int>> input, int visited[][4], int startX, int startY)
 {
     if (startX < 0 || startY < 0 || startX>=input.size() || startY>=input.size() || input[startX][startY] == 0 || visited[startX][startY] == 1)
     {
@@ -36,7 +35,7 @@ bool isSafe(vector<vector<int>> input, int visited[][input.size()], int startX, 
     }
 }
 
-void ratMovement(vector<vector<int>> input, int visited[][input.size()], string output, int startX, int startY, vector<string> &outputVector);
+void ratMovement(vector<vector<int>> input, int visited[][4], string output, int startX, int startY, vector<string> &outputVector)
 {
 
     // initially rat is at 0,0
@@ -54,8 +53,8 @@ void ratMovement(vector<vector<int>> input, int visited[][input.size()], string 
 
 
     //left movement
-    int newX = startX-1;
-    int newY = startY;
+    int newX = startX;
+    int newY = startY-1;
     if (isSafe(input, visited, newX, newY))
     {
         output += 'L';
@@ -67,8 +66,8 @@ void ratMovement(vector<vector<int>> input, int visited[][input.size()], string 
 
 
     //right movement
-    newX = startX+ 1;
-    newY = startY;
+    newX = startX;
+    newY = startY+1;
    
     if (isSafe(input, visited, newX, newY))
     {
@@ -81,8 +80,8 @@ void ratMovement(vector<vector<int>> input, int visited[][input.size()], string 
     }
 
     //up movement
-    newX = startX;
-    newY = startY-1;
+    newX = startX-1;
+    newY = startY;
     // condition = isSafe((input, visited, newX, newY));
     if (isSafe(input, visited, newX, newY))
     {
@@ -96,8 +95,8 @@ void ratMovement(vector<vector<int>> input, int visited[][input.size()], string 
 
 
     //down movement
-    newX = startX;
-    newY = startY+1;
+    newX = startX+1;
+    newY = startY;
     if (isSafe(input, visited, newX, newY))
     {
         
@@ -126,7 +125,7 @@ int main()
         {1, 1, 0, 0},
         {0, 1, 1, 1}};
     // create a visited vector with all elment zero for condition 3 of algorithm.
-int visited[input.size()][input.size()] = {0};
+int visited[input.size()][4] = {0};
 
     string output = "";
     int startX = 0;
